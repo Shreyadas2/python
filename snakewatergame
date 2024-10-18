@@ -1,0 +1,43 @@
+import random as r
+def game():
+    options = ["snake", "water", "gun"]
+
+    playersc = 0
+
+    computersc = 0
+
+    rounds = int(input("Number of rounds you wanna play: "))
+    for _ in range(rounds):
+        playerchoice = input("Choose 'snake', 'water' or 'gun': ").lower()
+
+        if playerchoice  not in  options :
+            print("Invalid Choice, Try again ")
+            continue
+
+        computer = r.choice(options)
+        print(f"Computer chose: {computer}")
+
+        if playerchoice == computer:
+            print("Its a tie !")
+
+        elif (playerchoice == "snake" and computer == "water") or (playerchoice == "water" and computer == "gun") or (playerchoice ==" gun" and computer == "snake"):
+            print("player win this round")
+            playersc+=10
+            computersc-=5
+        else:
+            print("Computer won this round")
+            computersc += 10
+            playersc -=5
+
+        print(f"Player score: {playersc}, Computer score: {computersc} ")
+
+    if playersc > computersc:
+        print("Player Won")
+    elif computersc> playersc:
+        print("COmputer won")
+    else:
+        print("It's a tie")
+        
+        
+
+game()
